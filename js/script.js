@@ -26,3 +26,36 @@ markup.append(...elements);
  */
 
 //! ============================================================
+const price = document.querySelector('#price');
+const form = document.querySelector('.form');
+const quant = document.querySelector('#quantity');
+const amount = document.querySelector('.amount');
+const final = document.querySelector('.text-right');
+function calc(e) {
+  e.preventDefault();
+  const currentPrice = price.value;
+  const currentQuantity = quant.value;
+  const sum = currentQuantity * currentPrice;
+  console.log(sum);
+  amount.textContent = currentQuantity;
+  final.textContent = sum;
+}
+
+form.addEventListener('submit', calc);
+
+function amountText() {
+  const currentQuantity = quant.value;
+  amount.textContent = currentQuantity;
+}
+
+form.addEventListener('input', amountText);
+
+const div = document.querySelector('.container');
+
+const randomRgbColor = () => {
+  const r = Math.round(Math.random() * (255 - 1) + 1);
+  const g = Math.round(Math.random() * (255 - 1) + 1);
+  const b = Math.round(Math.random() * (255 - 1) + 1);
+  return `rgb(${r},${g},${b})`;
+};
+div.style.backgroundColor = randomRgbColor();
